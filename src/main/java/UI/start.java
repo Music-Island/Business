@@ -10,6 +10,7 @@ public class start extends JPanel{
     private MyFrame frame;
     private int w,h;
     private JButton shang,xiao,food,wear;
+    MapBaiduUtil ma;
     public start(MyFrame frame){
         this.frame = frame;
         w = frame.getWidth();
@@ -47,6 +48,8 @@ public class start extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
 //                frame.setVisible(false);
+                ma = new MapBaiduUtil();
+                ma.get();
                 xi();
             }
         });
@@ -73,8 +76,6 @@ public class start extends JPanel{
     }
 
     public void sh(){
-        MapBaiduUtil ma = new MapBaiduUtil();
-        ma.get();
         JFrame s = new JFrame("商圈");
         s.setBounds(0,0,1500,800);
 //        s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,71 +90,9 @@ public class start extends JPanel{
         c.add(bgs,-1);
 
         JTextArea ar = new JTextArea();
-        ar.setFont(new Font("微软雅黑",Font.PLAIN,21));
-        ar.append("最受欢迎的商圈：宝龙万象\n最佳美食聚集地：宝龙万象\n服饰类综合评分最高商圈：仓山万达\n\n---------------------------------------------------------------------------------\n");
-        ar.append("价格低于50：\n\n");
-        for (Integer i = 0; i < ma.sorted_sj.get(0).size(); i ++){
-            ar.append("商店名：");
-            ar.append(ma.sorted_sj.get(0).get(i).name);
-            ar.append("\n");
-            ar.append("价格：");
-            ar.append(String.valueOf(ma.sorted_sj.get(0).get(i).price));
-            ar.append("\n");
-            ar.append("排名：");
-            ar.append(String.valueOf(ma.sorted_sj.get(0).get(i).rating));
-            ar.append("\n");
-            ar.append("地址：");
-            ar.append(ma.sorted_sj.get(0).get(i).address);
-            ar.append("\n\n");
-        }
-        ar.append("---------------------------------------------------------------------------------\n");
-        ar.append("价格位于50-100：\n\n");
-        for (Integer i = 0; i < ma.sorted_sj.get(1).size(); i ++){
-            ar.append("商店名：");
-            ar.append(ma.sorted_sj.get(1).get(i).name);
-            ar.append("\n");
-            ar.append("价格：");
-            ar.append(String.valueOf(ma.sorted_sj.get(1).get(i).price));
-            ar.append("\n");
-            ar.append("排名：");
-            ar.append(String.valueOf(ma.sorted_sj.get(1).get(i).rating));
-            ar.append("\n");
-            ar.append("地址：");
-            ar.append(ma.sorted_sj.get(1).get(i).address);
-            ar.append("\n\n");
-        }
-        ar.append("---------------------------------------------------------------------------------\n");
-        ar.append("价格位于100-200：\n\n");
-        for (Integer i = 0; i < ma.sorted_sj.get(2).size(); i ++){
-            ar.append("商店名：");
-            ar.append(ma.sorted_sj.get(2).get(i).name);
-            ar.append("\n");
-            ar.append("价格：");
-            ar.append(String.valueOf(ma.sorted_sj.get(2).get(i).price));
-            ar.append("\n");
-            ar.append("排名：");
-            ar.append(String.valueOf(ma.sorted_sj.get(2).get(i).rating));
-            ar.append("\n");
-            ar.append("地址：");
-            ar.append(ma.sorted_sj.get(2).get(i).address);
-            ar.append("\n\n");
-        }
-        ar.append("---------------------------------------------------------------------------------\n");
-        ar.append("价格高于200：\n\n");
-        for (Integer i = 0; i < ma.sorted_sj.get(3).size(); i ++){
-            ar.append("商店名：");
-            ar.append(ma.sorted_sj.get(3).get(i).name);
-            ar.append("\n");
-            ar.append("价格：");
-            ar.append(String.valueOf(ma.sorted_sj.get(3).get(i).price));
-            ar.append("\n");
-            ar.append("排名：");
-            ar.append(String.valueOf(ma.sorted_sj.get(3).get(i).rating));
-            ar.append("\n");
-            ar.append("地址：");
-            ar.append(ma.sorted_sj.get(3).get(i).address);
-            ar.append("\n\n");
-        }
+        ar.setFont(new Font("微软雅黑",Font.PLAIN,28));
+        ar.append("最受欢迎的商圈：宝龙万象\n\n---------------------------------------------------------------------------------\n");
+
         JScrollPane js = new JScrollPane(ar);
         ar.setOpaque(false);
         js.setOpaque(false);
@@ -222,8 +161,71 @@ public class start extends JPanel{
         c.add(bgs,-1);
 
         JTextArea ar = new JTextArea();
-        ar.setFont(new Font("微软雅黑",Font.PLAIN,21));
-        ar.setText("");
+        ar.setFont(new Font("微软雅黑",Font.PLAIN,28));
+        ar.append("价格低于50：\n\n");
+        for (Integer i = 0; i < 5; i ++){
+            ar.append("商店名：");
+            ar.append(ma.sorted_sj.get(0).get(i).name);
+            ar.append("\n");
+            ar.append("价格：");
+            ar.append(String.valueOf(ma.sorted_sj.get(0).get(i).price));
+            ar.append("\n");
+            ar.append("排名：");
+            ar.append(String.valueOf(ma.sorted_sj.get(0).get(i).rating));
+            ar.append("\n");
+            ar.append("地址：");
+            ar.append(ma.sorted_sj.get(0).get(i).address);
+            ar.append("\n\n");
+        }
+        ar.append("---------------------------------------------------------------------------------\n");
+        ar.append("价格位于50-100：\n\n");
+        for (Integer i = 0; i < 5; i ++){
+            ar.append("商店名：");
+            ar.append(ma.sorted_sj.get(1).get(i).name);
+            ar.append("\n");
+            ar.append("价格：");
+            ar.append(String.valueOf(ma.sorted_sj.get(1).get(i).price));
+            ar.append("\n");
+            ar.append("排名：");
+            ar.append(String.valueOf(ma.sorted_sj.get(1).get(i).rating));
+            ar.append("\n");
+            ar.append("地址：");
+            ar.append(ma.sorted_sj.get(1).get(i).address);
+            ar.append("\n\n");
+        }
+        ar.append("---------------------------------------------------------------------------------\n");
+        ar.append("价格位于100-200：\n\n");
+        for (Integer i = 0; i < 5; i ++){
+            ar.append("商店名：");
+            ar.append(ma.sorted_sj.get(2).get(i).name);
+            ar.append("\n");
+            ar.append("价格：");
+            ar.append(String.valueOf(ma.sorted_sj.get(2).get(i).price));
+            ar.append("\n");
+            ar.append("排名：");
+            ar.append(String.valueOf(ma.sorted_sj.get(2).get(i).rating));
+            ar.append("\n");
+            ar.append("地址：");
+            ar.append(ma.sorted_sj.get(2).get(i).address);
+            ar.append("\n\n");
+        }
+        ar.append("---------------------------------------------------------------------------------\n");
+        ar.append("价格高于200：\n\n");
+        for (Integer i = 0; i < 5; i ++){
+            ar.append("商店名：");
+            ar.append(ma.sorted_sj.get(3).get(i).name);
+            ar.append("\n");
+            ar.append("价格：");
+            ar.append(String.valueOf(ma.sorted_sj.get(3).get(i).price));
+            ar.append("\n");
+            ar.append("排名：");
+            ar.append(String.valueOf(ma.sorted_sj.get(3).get(i).rating));
+            ar.append("\n");
+            ar.append("地址：");
+            ar.append(ma.sorted_sj.get(3).get(i).address);
+            ar.append("\n\n");
+        }
+        ar.append("---------------------------------------------------------------------------------\n");
         JScrollPane js = new JScrollPane(ar);
         ar.setOpaque(false);
         js.setOpaque(false);
@@ -246,8 +248,8 @@ public class start extends JPanel{
         c.add(bgs,-1);
 
         JTextArea ar = new JTextArea();
-        ar.setFont(new Font("微软雅黑",Font.PLAIN,21));
-        ar.setText("");
+        ar.setFont(new Font("微软雅黑",Font.PLAIN,28));
+        ar.append("最佳美食聚集地：宝龙万象\n\n---------------------------------------------------------------------------------\n");
         JScrollPane js = new JScrollPane(ar);
         ar.setOpaque(false);
         js.setOpaque(false);
@@ -270,8 +272,8 @@ public class start extends JPanel{
         c.add(bgs,-1);
 
         JTextArea ar = new JTextArea();
-        ar.setFont(new Font("微软雅黑",Font.PLAIN,21));
-        ar.setText("");
+        ar.setFont(new Font("微软雅黑",Font.PLAIN,28));
+        ar.append("服饰类综合评分最高：仓山万达\n\n---------------------------------------------------------------------------------\n");
         JScrollPane js = new JScrollPane(ar);
         ar.setOpaque(false);
         js.setOpaque(false);
