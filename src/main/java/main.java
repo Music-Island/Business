@@ -1,4 +1,4 @@
-package UI;
+import UI.MyFrame;
 
 public class main {
     public static void main(String[] args) {
